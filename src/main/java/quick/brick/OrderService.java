@@ -12,11 +12,6 @@ public class OrderService {
         this.productService = productService;
     }
 
-    public void createOrderFromProduct(Long productId) {
-        System.out.println("Заказ создан:");
-        System.out.println(productService.getTitleById(productId));
-    }
-
     public void userListener(String cmd) {
         String[] parts = cmd.split("\\s");
 

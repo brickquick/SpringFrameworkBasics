@@ -25,7 +25,7 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
-    public int getProductSize(){
+    public int getProductSize() {
         return productRepository.getProductsSize();
     }
 

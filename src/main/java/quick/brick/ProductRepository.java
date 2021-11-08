@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 public interface ProductRepository {
 
     Product findById(Long id);
+
     int getProductsSize();
 
 }
