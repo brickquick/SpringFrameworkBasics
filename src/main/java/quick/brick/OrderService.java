@@ -33,13 +33,20 @@ public class OrderService {
         }
         if (cmd.startsWith("delete")) {
             String product = parts[1];
-            cart.deleteFromCart(product);
-            System.out.println("Из карзины удален товар:");
-            System.out.println(productService.getTitleById(Long.parseLong(product)));
+            if (cart.deleteFromCart(product)) {
+                System.out.println("Из карзины удален товар:");
+                System.out.println(productService.getTitleById(Long.parseLong(product)));
+            } else {
+                System.out.println("Товар с таким ID в корзине отсутствует");
+            }
             return;
         }
         if (cmd.equals("show cart")) {
             try {
+                if (cart.showContent().equals("")) {
+                    System.out.println("Корзина пуста");
+                    return;
+                }
                 System.out.println(cart.showContent());
             } catch (NullPointerException e) {
                 System.out.println("Корзина не создана");

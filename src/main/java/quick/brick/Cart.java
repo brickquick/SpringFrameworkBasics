@@ -23,9 +23,13 @@ public class Cart {
         productsInCart.add(productService.getProductById(id));
     }
 
-    public void deleteFromCart(String cmd) {
+    public boolean deleteFromCart(String cmd) {
         Long id = Long.parseLong(cmd);
-        productsInCart.remove(productService.getProductById(id));
+        if (productsInCart.contains(productService.getProductById(id))) {
+            productsInCart.remove(productService.getProductById(id));
+            return true;
+        }
+        return false;
     }
 
     public String showContent() {
